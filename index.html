@@ -9,44 +9,60 @@
 window.onpopstate = function(event) {
   getContent();
 };
+
+
+
 function getContent() {
-  var u = location.pathname;
-  $.ajax({
-    data: {href: u},
+url = window.location.pathname;
+path = url.split("/");
+count = path.length-2;
+slug = path[count];
+
+if (url == "/") { load_page("hola"); } else 
+if (url == "/blog/") { load_page("hola"); } else 
+if (url == "/productos/") {load_page("hola"); } 
+
+}
+var load_page = function(inf){
+  $.ajax({type: "GET",
+    url: "test.php",
+    data: {page: inf},
+    cache: false,
+    //dataType: "json",
     success: function(result) {
-      $("p").html(result);
+      $("#contenido").html(result);
+
     }
   });
+
 }
+
 $(document).ready(function() {
-  $.ajaxSetup ({  
-    cache: false,
-    url: "test.php"
-  }); 
+ 
   $('nav a').click(function(e) {
     var href = $(this).attr("href");
-    document.title = 'blah';
+    document.title = href;
     history.pushState('', '', href);
     getContent();
     e.preventDefault();
   });
+
 });
 
   </script>
 </head>
 <body>
 
-<h1>pushState + Ajax</h1>
 <nav>
-  <a href="/psa/">Home</a>
-  <a href="/psa/page/1/">Page 1</a>
-  <a href="/psa/page/2/">Page 2</a>
-  <a href="/psa/page/3/">Page 3</a>
+  <a href="/">Home</a>
+  <a href="/blog/">blog</a>
+  <a href="/productos/">productos</a>
+  <a href="/productos/test/">el producto 1</a>
 </nav>
-<article>
-  <h2>Bienvenido</h2>
-  <p>funcionamiento de history.pushState + Ajax!</p>
-</article>
+
+<section id="contenido" role="main">
+
+</section>
 
 </body>
 </html>

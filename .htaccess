@@ -1,0 +1,16 @@
+# html5 pushstate (history) support:
+
+SetEnv PHP_VER 5_3
+Options All -Indexes
+
+<ifmodule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !index  
+RewriteRule (.*) index.html [NC,QSA,L]
+
+
+</ifmodule>
