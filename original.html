@@ -1,7 +1,9 @@
 <script type="text/javascript">
+
 window.onpopstate = function(event) {
   getContent();
 };
+
 function getContent() {
   var u = location.pathname;
   $.ajax({
@@ -11,6 +13,7 @@ function getContent() {
     }
   });
 }
+
 $(document).ready(function() {
   $.ajaxSetup ({  
     cache: false,
@@ -24,4 +27,5 @@ $(document).ready(function() {
     e.preventDefault();
   });
 });
+
 </script>
