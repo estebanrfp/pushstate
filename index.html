@@ -39,7 +39,7 @@ $(document).ready(function() {
  
   $('nav a').click(function(e) {
     var href = $(this).attr("href");
-    document.title = href;
+    //document.title = href;
     history.pushState('', '', href);
     getContent();
     e.preventDefault();
