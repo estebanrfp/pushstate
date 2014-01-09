@@ -1,0 +1,25 @@
+window.onpopstate = function(event) {
+  getContent();
+};
+function getContent() {
+  var u = location.pathname;
+  $.ajax({
+    data: {href: u},
+    success: function(result) {
+      $("p").html(result);
+    }
+  });
+}
+$(document).ready(function() {
+  $.ajaxSetup ({  
+    cache: false,
+    url: "/path/to/script.php"
+  }); 
+  $('nav a').click(function(e) {
+    var href = $(this).attr("href");
+    document.title = 'blah';
+    history.pushState('', '', href);
+    getContent();
+    e.preventDefault();
+  });
+});
