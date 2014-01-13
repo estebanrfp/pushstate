@@ -13,4 +13,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !index  
 RewriteRule (.*) index.html [NC,QSA,L]
 
+
 </ifmodule>
