@@ -1,5 +1,5 @@
-PushState-With-Ajax
-===================
+PushState / Ajax
+================
 
 URL´S amigables [utilizado en el core de Ajax-CMS]
 
