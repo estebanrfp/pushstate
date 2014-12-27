@@ -12,7 +12,7 @@ Permite generar slug y dependiendo del mismo acceder a diferentes contenidos.
 Esteban Fuster Pozzi
 
 
-[desarrolloactivo.com](http://desarrolloactivo.com/)
+[desarrolloactivo.com](https://desarrolloactivo.com/)
 =======
 Tecnologías de la información y la comunicación
 
