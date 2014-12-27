@@ -1,56 +1,53 @@
 <!DOCTYPE html>
 <html>
 <head>
-  
 
   <title>history.pushState()</title>
   <meta charset="utf-8" />
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
   <script type="text/javascript">
 
-window.onpopstate = function(event) {
-  getContent();
-};
-
-function getContent() {
-url = window.location.pathname;
-path = url.split("/");
-count = path.length-2;
-slug = path[count];
-
-if (url == "/") { load_page("Home"); } else 
-if (url == "/blog/") { load_page("Blog"); } else 
-if (url == "/productos/") {load_page("Productos"); } 
-
-}
-
-var load_page = function(inf){
-  $.ajax({type: "GET",
-    url: "test.php",
-    data: {page: inf},
-    cache: false,
-    //dataType: "json",
-    success: function(result) {
-      $("#contenido").html(result);
-
-    }
-  });
-
-}
-
-
-
-$(document).ready(function() {
- 
-  $('nav a').click(function(e) {
-    var href = $(this).attr("href");
-    //document.title = href;
-    history.pushState('', '', href);
+  window.onpopstate = function(event) {
     getContent();
-    e.preventDefault();
-  });
+  };
 
-});
+  function getContent() {
+  url = window.location.pathname;
+  path = url.split("/");
+  count = path.length-2;
+  slug = path[count];
+
+  if (url == "/") { load_page("Home"); } else 
+  if (url == "/blog/") { load_page("Blog"); } else 
+  if (url == "/productos/") {load_page("Productos"); } 
+
+  }
+
+  var load_page = function(inf){
+    $.ajax({type: "GET",
+      url: "test.php",
+      data: {page: inf},
+      cache: false,
+      //dataType: "json",
+      success: function(result) {
+        $("#contenido").html(result);
+
+      }
+    });
+
+  }
+
+  $(document).ready(function() {
+   
+    $('nav a').click(function(e) {
+      var href = $(this).attr("href");
+      //document.title = href;
+      history.pushState('', '', href);
+      getContent();
+      e.preventDefault();
+    });
+
+  });
 
   </script>
 </head>
